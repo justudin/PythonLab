@@ -1,0 +1,127 @@
+#!/usr/bin/python
+# Use the following template:
+# MIT AITI Indonesia Summer 2013
+# File: Python1lab.py
+# Below are templates for your answers to Lab 4
+# INSTRUCTIONS: Write your complete name in student_name and age in student_age
+# Complete the implementation of functions and classes as described in the handout.
+# Delete the pass statements below and insert your own code.
+
+student_name 	= 'Muhammad Syafrudin'
+nick_name	= 'justudin'
+student_age 	= 23
+
+def fib(n):
+# Insert your code here
+	listfib = []
+	a, b = 0, 1
+	while a < n:
+		listfib.append(a)
+        	a, b = b, a+b
+	return listfib
+
+def zellers():
+# ask the user of their first and last names
+# ask the user for their date of birth
+# find the century and year
+# apply zeller's algorithm
+# print out the result
+	fname=raw_input("Please type your First Name : ")
+	lname=raw_input("Please type your Last Name : ")
+	month=input("Please type your month of birthday (between 1-12) : ")
+	day=input("Please type your day of birthday (between 1-31) : ")
+	year=input("Please type your year of birthday (ex. 1990): ")
+	if(month==1 or month==2):
+		A=month+2
+		NewYear = year-1
+	else:
+		A=month-2
+		NewYear = year
+	B=day
+	C=NewYear%100
+	D=NewYear/100
+	W=(13*A-1)/5
+	X=C/4
+	Y=D/4
+	Z=W+X+Y+B+C-2*D
+	R=Z%7
+	if R==0:
+		dofw="Sunday"
+	elif R==1:
+		dofw="Monday"
+	elif R==2:
+		dofw="Tuesday"
+	elif R==3:
+		dofw="Wednesday"
+	elif R==4:
+		dofw="Thursday"
+	elif R==5:
+		dofw="Friday"
+	elif R==6:
+		dofw="Saturday"
+		
+	print "Full Name : ",fname,lname
+	print "The Day of your birthday is : ",dofw
+
+def rock_paper_scissors():
+# ask the user for the players' choice of object
+# make sure the object name entered is valid
+# print out the result of the game
+	print "Type just between rock, paper and scissors"
+	choicelist = ['rock','paper','scissors']
+	choice1=raw_input("Player 1? ")
+	if choice1 in choicelist:
+		A=choice1
+	else:
+		print "This is not valid"
+	choice2=raw_input("Player 2? ")
+	if choice2 in choicelist:
+		B=choice2
+	else:
+		print "This is not valid"
+	
+	if(A=='rock' and B=='paper'):
+		print "Player 2 wins."
+	elif(A=='rock' and B=='rock'):
+		print "Draw."
+
+	elif(A=='paper' and B=='rock'):
+		print "Player 1 wins."
+
+	elif(A=='rock' and B=='scissors'):
+		print "Player 1 wins."
+	elif(A=='scissors' and B=='rock'):
+		print "Player 2 wins."
+	elif(A=='paper' and B=='scissors'):
+		print "Player 2 wins."
+	elif(A=='scissors' and B=='paper'):
+		print "Player 1 wins."
+
+
+def menu():
+#menu for interactive system
+	print "\n======== Menu Lab4-Python Intro ========"	
+	print "Choose only number between 1,2,3"
+	print "1. Fibonacci"
+	print "2. Zelter's Algorithm"
+	print "3. Rock Paper Scissors Game"
+	print "========= any number for exit =========="
+	choice=input("Input your choice : ")
+	if choice==1:
+		print "Your choice is 1. Fibonacci"
+		n=input("Please Input the number : ")
+		listfib=fib(n)
+		print "The list of fibonacci is : ",listfib
+		menu()
+	elif choice==2:
+		print "Your choice is 2. Zelter's Algorithm"
+		zellers()
+		menu()
+	elif choice==3:
+		print "Your choice is 3. Rock Paper Scissors Game"
+		rock_paper_scissors()
+	else: exit(0)
+	
+
+#call menu()
+menu()
